@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+     
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolkata Hodophile - Travel Agency</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .logo img {
+    width: 50px;       /* Adjust the size as needed */
+    height: 50px;      /* Ensure width and height are equal to create a circle */
+    border-radius: 50%; /* Makes the image round */
+    object-fit: cover;  /* Ensures the image fits nicely within the circle */
+}
+
+
+        :root {
+            --primary-color: #990000;
+            --secondary-color: #009ffd;
+            --text-color: #520450;
+            --light-bg: #f9f9f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+        }
+
+        /* Header Styles */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(47, 198, 24, 0.484);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(24, 192, 15, 0.5)),
+                        url('https://source.unsplash.com/1600x900/?travel') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: rgb(13, 13, 13);
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: slideUp 1s ease;
+        }
+        .hero p {
+            font-size: 2rem;
+        }
+
+        /* Packages Section */
+        .packages {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .package-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .package-card:hover .package-image img {
+            transform: scale(1.1);
+        }
+
+        .package-info {
+            padding: 1.5rem;
+        }
+        /* Founder Section Styles */
+
+        .founder-section {
+    padding: 4rem 2rem;
+    background-color: #f9fafb;
+}
+
+.founder-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.founder-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.founder-image {
+    flex: 0 0 350px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.founder-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.founder-info {
+    flex: 1;
+}
+
+.founder-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.founder-title {
+    font-size: 1.125rem;
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+
+.founder-description {
+    font-size: 1rem;
+    line-height: 1.625;
+    color: #4b5563;
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+.founder-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.founder-social a {
+    color: #6b7280;
+    transition: color 0.3s ease;
+}
+
+.founder-social a:hover {
+    color: #3b82f6;
+}
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--light-bg);
+            padding: 5rem 2rem;
+        }
+
+        .testimonial-slider {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-item {
+            padding: 2rem;
+            text-align: center;
+            display: none;
+            animation: fade 1s;
+        }
+
+        .testimonial-item.active {
+            display: block;
+        }
+
+        /* Booking Form */
+        .booking-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                right: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                padding: 2rem;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Additional Features */
+        .theme-switcher {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 1rem;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--secondary-color);
+            z-index: 9999;
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.5s;
+        }
+        /* Add these to your CSS */
+.services {
+    padding: 5rem 2rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.service-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+        /* Update footer styles */
+/* Footer */
+footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0rem;
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(28px, 9fr));
+            gap:2rem;
+        }
+        .footer-section h3 {
+            margin-bottom: 2rem;
+        }
+.footer-section p:hover {
+    color: var(--secondary-color);
+}
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .package-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero {
+                height: 60vh;
+            }
+        }
+
+        /* Utility Classes */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #fffefefd;
+        }
+        /* Add to loading screen styles */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="loading-screen">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="scroll-progress" style="width: 0%"></div>
+
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="pics/logo.jpg" alt="Website Logo">
+            Kolkata Hodophile</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="testimonial.html">Testimonials</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Discover Your Next Adventure</h1>
+            <p>Explore the world with our curated travel experiences</p>
+        </div>
+    </section>
+
+    <section class="packages" id="packages">
+        <h2 class="section-title">Featured Packages</h2>
+        <div class="package-grid" id="packageContainer"></div>
+    </section>
+    <section class="founder-section" id="founder">
+        <div class="founder-container">
+            <div class="founder-content">
+                <div class="founder-image">
+                    <img src="pics/jont.jpg" alt="our founder image" width="300">
+                </div>
+                <div class="founder-info">
+                    <h3 class="founder-name">Himon Bhattarcharjee</h3>
+                    <h5 class="founder-title">Founder & CEO</h5>
+                    <p class="founder-description">
+                        As the founder of this company, my passion for travel has always been about more than just visiting new places—it's about immersing yourself in new cultures, connecting with people from all walks of life, and discovering the world in a way that leaves you enriched and inspired. From the very beginning, our goal has been to craft unique, personalized experiences that go beyond the ordinary, whether you're traveling solo, with family, or with friends.
+                    </p>
+                    <a href="http://www.youtube.com/amandhattarwal" target="_blank" rel="noopener noreferrer">YouTube</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href="https://www.facebook.com/share/19pgCZSEiN/" target="_blank" rel="noopener noreferrer">facebook</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href="https://www.instagram.com/hodophila_exploration?igsh=NWgyNXNrejd2NWxk" target="_blank" rel="noopener noreferrer">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            document.querySelector('.loading-screen').style.opacity = '0';
+            setTimeout(() => {
+                document.querySelector('.loading-screen').style.display = 'none';
+            }, 500);
+        });
+
+        // Mobile Menu Toggle
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Scroll Progress Indicator
+        window.addEventListener('scroll', () => {
+            const scrollProgress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.querySelector('.scroll-progress').style.width = scrollProgress + '%';
+        });
+
+        // Dynamic Package Loading
+        const packages = [
+            { 
+                title: 'North Bengal', 
+                price: '₹14250', 
+                image: './pics/packages/pck 1.jpg',
+                duration: '4 Night/5 days',
+                description: 'Discover the unspoiled beauty of North Bengal with our 6-day tour package.'
+            },
+            { 
+                title: 'Himachal Bliss', 
+                price: '₹11999', 
+                image: './pics/packages/pck2.jpg',
+                duration: '6 Night/7 Days',
+                description: 'Escape to the land of snow-capped mountains, serene valleys, and picturesque villages.'
+            },
+            { 
+                title: 'Sikkim Sojourn', 
+                price: '₹11999', 
+                image: './pics/packages/pck3.jpg',
+                duration: '6 Night/5 Days',
+                description: 'Explore the breathtaking landscapes of Sikkim, Marvel at the majestic Kanchenjunga, and experience the tranquility of Tsomgo Lake.'
+            },
+            { 
+                title: 'Rajasthan Royale', 
+                price: '₹17999', 
+                image: './pics/packages/pck4.jpg',
+                duration: '6 Night/7 Days',
+                description: 'Explore the majestic forts of Jaipur, marvel at the stunning architecture of Udaipur, and discover the vibrant culture of Jodhpur.'
+            },
+            { 
+                title: 'Kashmir Paradise', 
+                price: '₹21000', 
+                image: './pics/packages/pck5.jpg',
+                duration: '11 Night/12 Days',
+                description: 'Experience the breathtaking beauty of Kashmir, with its serene lakes, majestic mountains, and vibrant culture. Book now and discover why Kashmir is truly a heaven on earth'
+            },
+            { 
+                title: 'Sar Pass Trek', 
+                price: '₹7500', 
+                image: './pics/packages/pck6.jpg',
+                duration: '4 Night/5 Days',
+                description: 'Embark on a thrilling 4-day trek through the picturesque Parvati Valley, crossing the majestic Sar Pass at 13,800 ft.'
+            }
+        ];
+
+
+        const packageContainer = document.getElementById('packageContainer');
+        packages.forEach(pkg => {
+            const packageCard = document.createElement('div');
+            packageCard.className = 'package-card';
+            packageCard.innerHTML = `
+                <div class="package-image">
+                    <img src="${pkg.image}" alt="${pkg.title}">
+                </div>
+                <div class="package-info">
+                    <h3>${pkg.title}</h3>
+                    <p>${pkg.description}</p>
+                    <div class="package-details">
+                        <span class="price">${pkg.price}</span>
+                        <span class="duration">${pkg.duration}</span>
+                    </div>
+                </div>
+            `;
+            packageContainer.appendChild(packageCard);
+        });
+
+        // Modal Functions
+        function showBookingModal(packageName) {
+            const modal = document.createElement('div');
+            modal.className = 'booking-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <h3>Book Package: ${packageName}</h3>
+                    <form onsubmit="handleBooking(event)">
+                        <!-- Add form fields here -->
+                        <button type="submit">Confirm Booking</button>
+                    </form>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Intersection Observer for animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Add animation to all section elements
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.5s ease';
+            observer.observe(section);
+        });
+        // Update modal function
+function showBookingModal(packageName) {
+    const modal = document.createElement('div');
+    modal.className = 'booking-modal';
+    modal.innerHTML = `
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3>Book ${packageName}</h3>
+            <form onsubmit="handleBooking(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Travel Date</label>
+                    <input type="date" required>
+                </div>
+                <button type="submit" class="btn">Confirm Booking</button>
+            </form>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    const modal = document.querySelector('.booking-modal');
+    if(modal) {
+        modal.remove();
+        document.body.style.overflow = 'auto';
+    }
+}
+    </script>
+      <section class="services" id="services">
+        <div class="services-container">
+            <div class="service-card">
+                <h3>Flight Booking</h3>
+                <p>Best price guarantee on all flight bookings</p>
+            </div>
+            <div class="service-card">
+                <h3>Hotel Reservation</h3>
+                <p>Luxury to budget accommodations worldwide</p>
+            </div>
+            <div class="service-card">
+                <h3>Tour Guides</h3>
+                <p>Professional guides in multiple languages</p>
+            </div>
+        </div>
+    </section>
+</body>
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <p>we specialize in curating unforgettable travel experiences, offering personalized tours and seamless services that take you on a journey to explore the world's most beautiful destinations with comfort, convenience, and expert guidance.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <p>Privacy Policy</p>
+            <p>Terms & Conditions</p>
+        </div>
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>Email: walkinhimalayas@aol.com</p>
+            <p>Phone: 8961839145</p>
+        </div>
+       <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/19pgCZSEiN/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/hodophila_exploration?igsh=NWgyNXNrejd2NWxk" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</html>
